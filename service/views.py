@@ -23,12 +23,18 @@ class ConsultationRequestViewSet(viewsets.ModelViewSet):
     queryset = ConsultationRequest.objects.all()
     serializer_class = ConsultationRequestSerializer
 
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_authenticated and user.role in ['admin', 'translator']:
+            return ConsultationRequest.objects.all()  # Админы и переводчики видят все
+        return ConsultationRequest.objects.filter(email=user.email)  # Клиенты видят только свои
+
     def get_permissions(self):
         if self.action == 'create':
             return [permissions.AllowAny()]  # Анонимы могут создавать
         elif self.action in ['update', 'partial_update', 'destroy']:
-            return [IsTranslator | IsAdmin]  # Редактировать могут только переводчики и админы
-        return [permissions.IsAuthenticated()]  # Просмотр для авторизованных
+            return [IsTranslator(), IsAdmin()]  # Только переводчики и админы редактируют
+        return [permissions.IsAuthenticated()]  # Авторизованные могут просматривать
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
@@ -37,9 +43,9 @@ class ReviewViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'create':
-            return [IsClient]  # Только клиенты могут оставлять отзывы
+            return [IsClient()]  # Только клиенты могут оставлять отзывы
         elif self.action in ['update', 'partial_update', 'destroy']:
-            return [IsClientOwnerOrReadOnly]  # Редактировать может только автор
+            return [IsClientOwnerOrReadOnly()]  # Редактировать может только автор
         return [permissions.AllowAny()]  # Просмотр для всех
 
 
@@ -47,11 +53,17 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer  # (Нужно создать, см. ниже)
 
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_authenticated and user.role in ['admin', 'translator']:
+            return ConsultationRequest.objects.all()  # Админы и переводчики видят все
+        return ConsultationRequest.objects.filter(email=user.email)  # Клиенты видят только свои
+
     def get_permissions(self):
         if self.action == 'create':
-            return [IsClient]  # Создавать могут только клиенты
+            return [IsClient()]  # Создавать могут только клиенты
         elif self.action in ['update', 'partial_update']:
-            return [CanEditOrder]  # Редактирование по спец.правилам
+            return [CanEditOrder()]  # Редактирование по спец.правилам
         return [permissions.IsAuthenticated()]  # Просмотр для авторизованных
 
     def perform_create(self, serializer):

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+from djoser.serializers import UserCreateSerializer as BaseUserCreateSerializer
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -45,3 +46,8 @@ class ReviewSerializer(serializers.ModelSerializer):
         if request and request.user.is_authenticated:
             validated_data['user'] = request.user
         return super().create(validated_data)
+
+class UserCreateSerializer(BaseUserCreateSerializer):
+    class Meta(BaseUserCreateSerializer.Meta):
+        model = User
+        fields = ('id', 'email', 'password', 'role', 'phone')

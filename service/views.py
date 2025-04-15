@@ -51,21 +51,55 @@ class ReviewViewSet(viewsets.ModelViewSet):
 
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
-    serializer_class = OrderSerializer  # (Нужно создать, см. ниже)
+    serializer_class = OrderSerializer
+
+    def create(self, request, *args, **kwargs):
+        # Проверяем, есть ли consultation_request_id в запросе
+        consultation_request_id = request.data.get('consultation_request_id')
+        if not consultation_request_id:
+            return Response(
+                {"error": "consultation_request_id is required"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            consultation = ConsultationRequest.objects.get(id=consultation_request_id)
+        except ConsultationRequest.DoesNotExist:
+            return Response(
+                {"error": "Consultation request not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Собираем данные для Order
+        order_data = {
+            'user': request.user.id,
+            'service': request.data.get('service'),  # Должен быть передан явно
+            'from_language': request.data.get('from_language'),
+            'to_language': request.data.get('to_language'),
+            'comment': request.data.get('comment', ''),
+            'delivery_method': request.data.get('delivery_method', 'pickup'),
+            'address': request.data.get('address', ''),
+            'total_price': request.data.get('total_price', 0),
+        }
+
+        serializer = OrderSerializer(data=order_data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get_queryset(self):
         user = self.request.user
         if user.is_authenticated and user.role in ['admin', 'translator']:
-            return ConsultationRequest.objects.all()  # Админы и переводчики видят все
-        return ConsultationRequest.objects.filter(email=user.email)  # Клиенты видят только свои
+            return Order.objects.all()  # Исправлено: возвращаем Order, а не ConsultationRequest
+        return Order.objects.filter(user=user)  # Клиенты видят только свои заказы
 
     def get_permissions(self):
         if self.action == 'create':
-            return [IsClient()]  # Создавать могут только клиенты
+            return [IsClient()]
         elif self.action in ['update', 'partial_update']:
-            return [CanEditOrder()]  # Редактирование по спец.правилам
-        return [permissions.IsAuthenticated()]  # Просмотр для авторизованных
+            return [CanEditOrder()]
+        return [permissions.IsAuthenticated()]
 
     def perform_create(self, serializer):
-        if self.request.user.role == 'client':
-            serializer.save(user=self.request.user)
+        serializer.save(user=self.request.user)

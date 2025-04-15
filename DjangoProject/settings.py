@@ -40,15 +40,18 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'service',  # наше приложение
+    'rest_framework.authtoken',  # Для токенов
+    'djoser',
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',  # Для сессий
+        'rest_framework.authentication.TokenAuthentication',  # Токены DRF
+        'rest_framework.authentication.BasicAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.permissions.AllowAny',  # Открытый доступ по умолчанию (изменяй по необходимости)
     ],
 }
 
@@ -146,3 +149,11 @@ CORS_ALLOW_ALL_ORIGINS = True  # Для разработки, в production ог
 AUTH_USER_MODEL = 'service.User'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'SERIALIZERS': {
+        'user_create': 'djoser.serializers.UserCreateSerializer',
+        'user': 'djoser.serializers.UserSerializer',
+    },
+}

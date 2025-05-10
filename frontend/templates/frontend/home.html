@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Бюро переводов “Ё”</title>
+
+    <meta name="description" content="Профессиональное бюро переводов с 2005 года." />
+    <meta property="og:title" content="Бюро переводов “Ё”" />
+    <meta property="og:description" content="Устные и письменные переводы всех языков мира." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/static/logo.png" />
+
+    <link rel="stylesheet" href="{% static 'css/home/style.css' %}" />
+</head>
+<body>
+    <header>
+        <div class="logo">Бюро “Ё”</div>
+        <div class="burger" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li class="dropdown">
+                    <a href="#">Услуги</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Письменный</a></li>
+                        <li><a href="#">Устный</a></li>
+                        <li><a href="#">Дополнительные</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="login">
+            {% if user.is_authenticated %}
+                <span>Добро пожаловать, {{ user.first_name|default:user.username }}!</span>
+            {% else %}
+                <a href="{% url 'login' %}" class="login-btn">Войти</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Главная</a>
+        <a href="#">Письменный</a>
+        <a href="#">Устный</a>
+        <a href="#">Дополнительные</a>
+        <a href="#">О нас</a>
+        <a href="#">Контакты</a>
+        <div class="mobile-login">
+            {% if user.is_authenticated %}
+                Добро пожаловать, {{ user.first_name|default:user.username }}!
+            {% else %}
+                <a href="{% url 'login' %}" style="color: #A9C4FF">Войти</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <section class="slider">
+        <div class="slider-wrapper">
+            <div class="slides" id="slider">
+                <div class="slide">
+                    <h1>Бюро переводов “Ё”</h1>
+                    <p>Наше бюро работает с 2005 года и занимается переводом различных языков в устной и письменной формах</p>
+                </div>
+                <div class="slide">
+                    <h1>Качество и надёжность</h1>
+                    <p>Только профессиональные переводчики и опытные редакторы</p>
+                </div>
+                <div class="slide">
+                    <h1>Любые языки</h1>
+                    <p>Более 100 языков мира для бизнеса и частных лиц</p>
+                </div>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button onclick="prevSlide()">&lt;</button>
+            <button onclick="nextSlide()">&gt;</button>
+        </div>
+    </section>
+
+    <section class="services">
+        <h2>Наши услуги</h2>
+        <div class="service-item">
+            <span class="icon">🌍</span>
+            <div>
+                <h3>Перевод</h3>
+                <p>Заверенные переводы документов разных типов практически всех языков мира с/на русский язык</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+        <!-- Повтори блок еще 2 раза -->
+    </section>
+
+    <section class="prices">
+        <h2>Наши цены</h2>
+        <div class="price-item">
+            <span class="icon">📄</span>
+            <div>
+                <h3>Перевод личных документов</h3>
+                <p>Паспорта, свидетельства о рождении/браке/смерти, водительские удостоверения и др.</p>
+            </div>
+            <span class="price">от 100 р.</span>
+        </div>
+        <!-- Повтори блок еще 2 раза -->
+    </section>
+
+    <section class="calculator">
+        <h2>Расчет личных документов</h2>
+        <p>Рассчитайте стоимость и сроки подготовки личных документов и закажите их перевод всего в пару кликов.</p>
+        <button>Рассчитать</button>
+    </section>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

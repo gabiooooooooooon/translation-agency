@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'service',  # наше приложение
     'rest_framework.authtoken',  # Для токенов
     'djoser',
+    'frontend'
 ]
 
 REST_FRAMEWORK = {
@@ -71,8 +72,7 @@ ROOT_URLCONF = 'DjangoProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

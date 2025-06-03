@@ -1,0 +1,35 @@
+.calculator {
+    padding: 100px 0;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--light);
+    text-align: center;
+  }
+  
+  .calculator__title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .calculator__text {
+    font-size: 28px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+  
+  .calculator__btn {
+    background: var(--light);
+    color: var(--primary);
+    border: none;
+    padding: 15px 40px;
+    font-size: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .calculator__btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+  

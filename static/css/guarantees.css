@@ -1,0 +1,45 @@
+.guarantees {
+    padding: 80px 0;
+    background: var(--light);
+  }
+  
+  .guarantees__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+  }
+  
+  .guarantee {
+    display: flex;
+    background: var(--light);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+  }
+  
+  .guarantee:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+  
+  .guarantee__icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    flex-shrink: 0;
+  }
+  
+  .guarantee__title {
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 15px;
+    color: var(--primary);
+  }
+  
+  .guarantee__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  

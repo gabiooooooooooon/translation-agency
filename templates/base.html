@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Бюро переводов 'Ё' — профессиональные переводы, апостиль и легализация.">
+  <meta property="og:title" content="Бюро переводов 'Ё'">
+  <meta property="og:description" content="Устный и письменный перевод, легализация, апостиль.">
+  <meta property="og:image" content="{% static 'img/og-image.jpg' %}">
+  <title>{% block title %}Бюро переводов "Ё"{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Josefin+Sans:wght@400;700&family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header.css' %}">
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+          <a href="{% url 'index' %}" class="logo">
+            <img src="{% static 'icons/logo.svg' %}" alt="Бюро переводов 'Ё'" class="logo__img">
+          </a>
+          
+          <nav class="nav" id="nav">
+            <ul class="nav__list">
+              <li><a href="{% url 'index' %}">Главная</a></li>
+              <li class="nav__dropdown" id="services-dropdown">
+                <a href="#">Услуги</a>
+                <ul class="nav__submenu">
+                  <li><a href="{% url 'services_written' %}">Письменный перевод</a></li>
+                  <li><a href="#">Устный перевод</a></li>
+                  <li><a href="#">Доп. услуги</a></li>
+                  <li><a href="#">Анкеты на визу</a></li>
+                  <li><a href="#">Оформить заказ</a></li>
+                  <li><a href="#">Заказать консультацию</a></li>
+                </ul>
+              </li>
+              <li class="nav__dropdown" id="about-dropdown">
+                <a href="#">О нас</a>
+                <ul class="nav__submenu">
+                  <li><a href="#">Информация о нас</a></li>
+                  <li><a href="#">Отзывы</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Контакты</a></li>
+            </ul>
+            
+            <div class="nav__auth">
+              {% if request.user.is_authenticated %}
+                <a href="#" class="login-btn" id="user-email">{{ request.user.email }}</a>
+                <ul class="auth-dropdown">
+                  <li><a href="#">Мои заказы</a></li>
+                  <li><a href="#">Изменить пароль</a></li>
+                  <li>
+                      <form id="logout-form" action="/auth/token/logout/" method="post" style="display: none;">
+        {% csrf_token %}
+    </form>
+                      <a href="#" class="logout-link" onclick="document.getElementById('logout-form').submit(); return false;">
+        Выйти
+    </a>
+                  </li>
+                </ul>
+              {% else %}
+                <a href="{% url 'login' %}" class="login-btn">Войти</a>
+              {% endif %}
+            </div>
+          </nav>
+          
+          <div class="header__auth">
+            {% if user.is_authenticated %}
+              <a href="#" class="login-btn" id="user-email-mobile">{{ user.email }}</a>
+              <ul class="auth-dropdown">
+                <li><a href="#">Мои заказы</a></li>
+                <li><a href="#">Изменить пароль</a></li>
+                <li>
+                    <form id="logout-form" action="/auth/token/logout/" method="post" style="display: none;">
+        {% csrf_token %}
+    </form>
+                      <a href="#" class="logout-link" onclick="document.getElementById('logout-form').submit(); return false;">
+        Выйти
+    </a>
+                </li>
+              </ul>
+            {% else %}
+              <a href="{% url 'login' %}" class="login-btn">Войти</a>
+            {% endif %}
+          </div>
+          
+          <button class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__left">
+          <p class="footer__text">Бюро переводов в Ростове-на-Дону, апостиль, легализация, все виды письменных переводов, синхронный и последовательный перевод</p>
+        </div>
+        
+        <div class="footer__right">
+          <p class="footer__text">
+            г. Ростов-на-Дону<br>
+            ул. Ивановского 38/63, литер А, офис 217М<br>
+            Тел./Факс: +7 863 2403284<br>
+            Телефон: +7 988 536-536-1<br>
+            Электронная почта: office@yourperevod.ru<br><br>
+            Мы говорим на вашем языке — Бюро Переводов "Ё" ©
+          </p>
+        </div>
+      </div>
+      
+      <p class="footer__bottom">© 2005–2025 Бюро переводов Ё</p>
+    </div>
+  </footer>
+
+    <div hidden>
+  <!-- Для отладки -->
+  Auth: {{ request.user.is_authenticated|yesno:"Yes,No" }}
+  Token: {% if request.auth %}{{ request.auth }}{% else %}None{% endif %}
+  Session: {{ request.session.items }}
+</div>
+
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/auth.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

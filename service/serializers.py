@@ -27,8 +27,10 @@ class OrderSerializer(serializers.ModelSerializer):
     documents = DocumentSerializer(many=True, write_only=True)  # Вложенные файлы
     class Meta:
         model = Order
-        fields = '__all__'
-        read_only_fields = ['user']  # Запрещаем передавать user вручную
+        fields = ['id', 'user', 'service_type', 'source_language',
+                 'target_language', 'comment', 'delivery_type',
+                 'delivery_address', 'total_price', 'created_at']
+        read_only_fields = ['user', 'created_at']
 
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user  # Автоподстановка

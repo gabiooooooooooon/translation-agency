@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/slider.css' %}">
+  <link rel="stylesheet" href="{% static 'css/services.css' %}">
+  <link rel="stylesheet" href="{% static 'css/prices.css' %}">
+  <link rel="stylesheet" href="{% static 'css/calculator.css' %}">
+  <link rel="stylesheet" href="{% static 'css/guarantees.css' %}">
+  <link rel="stylesheet" href="{% static 'css/consultation.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+{% endblock %}
+
+{% block content %}
+  <!-- Slider -->
+  <section class="slider" id="slider">
+    <div class="slider__wrapper">
+      <div class="slide active" style="background-image: url('{% static 'img/slide1.jpg' %}')">
+        <h1 class="slider__title">Бюро переводов "Ё"</h1>
+        <p class="slider__text">Мы говорим на вашем языке</p>
+      </div>
+      <div class="slide" style="background-image: url('{% static 'img/slide2.jpg' %}')">
+        <h1 class="slider__title">Бюро переводов "Ё"</h1>
+        <p class="slider__text">Наше бюро работает с 2005 года и занимается переводом различных языков в устной и письменной формах</p>
+      </div>
+      <div class="slide" style="background-image: url('{% static 'img/slide3.jpg' %}')">
+        <h1 class="slider__title">Бюро переводов "Ё"</h1>
+        <p class="slider__text">Мы ждем вас!</p>
+      </div>
+    </div>
+
+    <button class="slider__btn prev">&lt;</button>
+    <button class="slider__btn next">&gt;</button>
+  </section>
+
+  <!-- Services -->
+  <section class="services">
+    <div class="container">
+      <h2 class="section-title">Наши услуги</h2>
+
+      <div class="services__list">
+        <div class="service">
+          <img src="{% static 'icons/translate.svg' %}" alt="Перевод" class="service__icon">
+          <div class="service__info">
+            <h3 class="service__title">Перевод</h3>
+            <p class="service__text">Заверенные переводы документов разных типов практически всех языков мира с/на русский язык</p>
+          </div>
+          <div class="service__arrow">→</div>
+        </div>
+
+        <div class="service">
+          <img src="{% static 'icons/passport.svg' %}" alt="Апостиль" class="service__icon">
+          <div class="service__info">
+            <h3 class="service__title">Апостиль</h3>
+            <p class="service__text">Легализация документов для использования за границей</p>
+          </div>
+          <div class="service__arrow">→</div>
+        </div>
+
+        <div class="service">
+          <img src="{% static 'icons/interpreter.svg' %}" alt="Устный перевод" class="service__icon">
+          <div class="service__info">
+            <h3 class="service__title">Устный перевод</h3>
+            <p class="service__text">Синхронный и последовательный перевод на мероприятиях</p>
+          </div>
+          <div class="service__arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prices -->
+  <section class="prices">
+    <div class="container">
+      <h2 class="section-title">Наши цены</h2>
+
+      <div class="prices__list">
+        <div class="price-item">
+          <div class="price__content">
+            <img src="{% static 'icons/personal-doc.svg' %}" alt="" class="price__icon">
+            <div class="price__info">
+              <h3 class="price__title">Перевод личных документов</h3>
+              <p class="price__text">Паспорта, свидетельства о рождении/браке/смерти, водительские удостоверения и др.</p>
+            </div>
+          </div>
+          <div class="price__cost">
+            <div class="price__from">от</div>
+            <div class="price__value">100 р.</div>
+          </div>
+        </div>
+
+        <div class="price-item">
+          <div class="price__content">
+            <img src="{% static 'icons/legal-doc.svg' %}" alt="" class="price__icon">
+            <div class="price__info">
+              <h3 class="price__title">Перевод юридических документов</h3>
+              <p class="price__text">Договоры, уставы, свидетельства о регистрации, судебные документы</p>
+            </div>
+          </div>
+          <div class="price__cost">
+            <div class="price__from">от</div>
+            <div class="price__value">300 р.</div>
+          </div>
+        </div>
+
+        <div class="price-item">
+          <div class="price__content">
+            <img src="{% static 'icons/edu-doc.svg' %}" alt="" class="price__icon">
+            <div class="price__info">
+              <h3 class="price__title">Перевод учебных документов</h3>
+              <p class="price__text">Дипломы, аттестаты, приложения, сертификаты, академические справки</p>
+            </div>
+          </div>
+          <div class="price__cost">
+            <div class="price__from">от</div>
+            <div class="price__value">250 р.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="calculator">
+    <div class="container">
+      <h2 class="calculator__title">Расчет личных документов</h2>
+      <p class="calculator__text">Рассчитайте стоимость и сроки подготовки личных документов и закажите их перевод всего в пару кликов.</p>
+      <button class="calculator__btn">Рассчитать</button>
+    </div>
+  </section>
+
+  <!-- Guarantees -->
+  <section class="guarantees">
+    <div class="container">
+      <h2 class="section-title">Наши гарантии</h2>
+
+      <div class="guarantees__list">
+        <div class="guarantee">
+          <img src="{% static 'icons/speed.svg' %}" alt="" class="guarantee__icon">
+          <div class="guarantee__content">
+            <h3 class="guarantee__title">Срочный перевод</h3>
+            <p class="guarantee__text">Поможем вам справиться в ситуации, когда сроки экстремально сжаты</p>
+          </div>
+        </div>
+
+        <div class="guarantee">
+          <img src="{% static 'icons/accuracy.svg' %}" alt="" class="guarantee__icon">
+          <div class="guarantee__content">
+            <h3 class="guarantee__title">Точность</h3>
+            <p class="guarantee__text">Каждый перевод проходит лингвистическую проверку</p>
+          </div>
+        </div>
+
+        <div class="guarantee">
+          <img src="{% static 'icons/confidential.svg' %}" alt="" class="guarantee__icon">
+          <div class="guarantee__content">
+            <h3 class="guarantee__title">Конфиденциальность</h3>
+            <p class="guarantee__text">Ваши документы в безопасности и не передаются третьим лицам</p>
+          </div>
+        </div>
+
+        <div class="guarantee">
+          <img src="{% static 'icons/support.svg' %}" alt="" class="guarantee__icon">
+          <div class="guarantee__content">
+            <h3 class="guarantee__title">Поддержка</h3>
+            <p class="guarantee__text">Наши менеджеры всегда на связи и готовы помочь</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation -->
+  <section class="consultation">
+    <div class="container">
+      <div class="consultation__wrap">
+        <img src="{% static 'icons/help.svg' %}" alt="" class="consultation__icon">
+        <div class="consultation__text">
+          <h2 class="consultation__title">Не разобрались, что вам конкретно необходимо?</h2>
+          <p class="consultation__subtitle">Закажите консультацию – это бесплатно</p>
+        </div>
+        <button class="consultation__btn">Заказать</button>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'js/slider.js' %}"></script>
+  <script src="{% static 'js/animations.js' %}"></script>
+  <script>
+    // Инициализация калькулятора
+    document.querySelector('.calculator__btn').addEventListener('click', function() {
+      // Здесь будет логика открытия модального окна калькулятора
+      alert('Функционал калькулятора будет реализован в следующих версиях');
+    });
+
+    // Обработчик кнопки консультации
+    document.querySelector('.consultation__btn').addEventListener('click', function() {
+      // Здесь будет логика открытия формы заказа консультации
+      alert('Форма заказа консультации будет доступна после авторизации');
+    });
+  </script>
+{% endblock %}ы

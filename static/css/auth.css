@@ -1,0 +1,62 @@
+.forgot-password {
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text);
+    margin-top: 25px;
+    margin-left: 5px;
+    text-decoration: none;
+    padding-bottom: 4px; /* Добавлено для отступа подчеркивания */
+  }
+  
+  .forgot-password::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text);
+    transition: width 0.3s ease;
+    transform-origin: right; /* Для более плавной анимации */
+  }
+  
+  .forgot-password:hover::after {
+    width: 100%;
+    transform-origin: left; /* Меняем точку начала анимации при наведении */
+  }
+
+  .register-link,
+  .login-link {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text);
+    margin-top: 30px;
+    text-decoration: none;
+  }
+  
+  .register-link::after,
+  .login-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text);
+    transition: width 0.3s ease;
+  }
+  
+  .register-link:hover::after,
+  .login-link:hover::after {
+    width: 100%;
+  }
+  
+  .links-container {
+    text-align: center;
+  }

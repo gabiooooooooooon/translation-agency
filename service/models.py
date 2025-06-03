@@ -1,7 +1,12 @@
 from django.contrib.auth.base_user import BaseUserManager
+from django.core.files.storage import default_storage
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -46,8 +51,8 @@ class ConsultationRequest(models.Model):
         ('email', 'Почта'),
     ]
     STATUS_CHOICES = [
-        ('new', 'Новый'),
-        ('processed', 'Обработан'),
+        ('new', 'В обработке'),
+        ('processed', 'Готов'),
     ]
     type = models.CharField(max_length=5, choices=TYPE_CHOICES)
     phone = models.CharField(max_length=20, blank=True, null=True)
@@ -75,11 +80,17 @@ class Service(models.Model):
     min_price = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 
 class OrderOption(models.Model):
     name = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):

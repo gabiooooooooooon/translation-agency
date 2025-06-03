@@ -1,0 +1,11 @@
+.projects {
+    margin-bottom: 80px;
+  }
+  
+  .projects-title {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary);
+  }

@@ -1,0 +1,59 @@
+.consultation {
+    padding: 80px 0;
+    background: var(--light);
+  }
+  
+  .consultation__wrap {
+    display: flex;
+    align-items: center;
+    background: var(--light);
+    border-radius: 8px;
+    padding: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: var(--shadow);
+  }
+  
+  .consultation__icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 40px;
+    flex-shrink: 0;
+  }
+  
+  .consultation__text {
+    flex: 1;
+  }
+  
+  .consultation__title {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--primary);
+  }
+  
+  .consultation__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+  }
+  
+  .consultation__btn {
+    background: var(--dark);
+    color: var(--light);
+    border: none;
+    padding: 15px 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 40px;
+  }
+  
+  .consultation__btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+  

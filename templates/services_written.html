@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta_description %}Письменный перевод документов в бюро переводов 'Ё'{% endblock %}
+{% block title %}Письменный перевод{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/services_section.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="page-title">Письменный перевод</h1>
+
+  <!-- Юридический перевод -->
+  <section class="service-section">
+    <div class="service-content">
+      <div class="service-info">
+        <h2 class="service-title">Юридический перевод</h2>
+        <p class="service-text">Перевод текстов, относящихся к области права. Юридический перевод требует тщательности и аккуратности, и, конечно же, знания юридических терминов и традиций в делопроизводстве различных стран.</p>
+      </div>
+      <a href="#" class="service-btn">Оформить заказ</a>
+    </div>
+    <div class="service-image" style="background-image: url('{% static 'img/legal-translation.jpg' %}')"></div>
+  </section>
+
+  <!-- Медицинский перевод -->
+  <section class="service-section">
+    <div class="service-content">
+      <div class="service-info">
+        <h2 class="service-title">Медицинский перевод</h2>
+        <p class="service-text">Перевод текстов, относящихся тем или иным образом к каждому из разделов медицины. Данный вид перевода требует особой точности и адекватности, поскольку порой связан со спасением жизни людей.</p>
+      </div>
+      <a href="#" class="service-btn">Оформить заказ</a>
+    </div>
+    <div class="service-image" style="background-image: url('{% static 'img/medical-translation.jpg' %}')"></div>
+  </section>
+
+  <!-- Технический перевод -->
+  <section class="service-section">
+    <div class="service-content">
+      <div class="service-info">
+        <h2 class="service-title">Технический перевод</h2>
+        <p class="service-text">Перевод технической документации, инструкций, чертежей, спецификаций и других материалов технического характера. Требует от переводчика специальных знаний в соответствующей области.</p>
+      </div>
+      <a href="{#  #}" class="service-btn">Оформить заказ</a>
+    </div>
+    <div class="service-image" style="background-image: url('{% static 'img/technical-translation.jpg' %}')"></div>
+  </section>
+
+  <!-- Художественный перевод -->
+  <section class="service-section">
+    <div class="service-content">
+      <div class="service-info">
+        <h2 class="service-title">Художественный перевод</h2>
+        <p class="service-text">Перевод литературных произведений, сохраняющий стиль, эмоциональную окраску и художественные особенности оригинала. Это творческий процесс, требующий от переводчика писательского таланта.</p>
+      </div>
+      <a href="#" class="service-btn">Оформить заказ</a>
+    </div>
+    <div class="service-image" style="background-image: url('{% static 'img/literary-translation.jpg' %}')"></div>
+  </section>
+</div>
+{% endblock %}

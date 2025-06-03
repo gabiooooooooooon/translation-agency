@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Оформление заказа | Бюро переводов "Ё"{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="container__form">
+    <h1 class="page-title">Заказ</h1>
+
+    <form id="orderForm" method="post" enctype="multipart/form-data" action="{% url 'submit_order' %}">
+      {% csrf_token %}
+
+      <!-- Тип услуги -->
+      <div class="form-group">
+        <label for="serviceType" class="form-label">Тип услуги</label>
+        <select id="serviceType" name="service_type" class="form-control" required>
+          <option value="" disabled selected>Выберите тип услуги</option>
+          <option value="written">Письменный перевод</option>
+          <option value="oral">Устный перевод</option>
+          <option value="additional">Дополнительные услуги</option>
+          <option value="visa">Анкеты на визу</option>
+        </select>
+      </div>
+
+      <!-- Загрузка файла -->
+      <div class="form-group hidden" id="fileUploadGroup">
+        <label for="documentFile" class="form-label">Документ для перевода</label>
+        <div class="file-upload">
+          <input type="file" id="documentFile" name="document_file" accept=".doc,.docx,.pdf,.rtf,.txt">
+          <span class="file-upload-text">Выберите файл для перевода</span>
+        </div>
+      </div>
+
+      <!-- Языки -->
+      <div class="form-group">
+        <label for="sourceLanguage" class="form-label">Язык оригинала</label>
+        <select id="sourceLanguage" name="source_language" class="form-control" required>
+          <option value="" disabled selected>Выберите язык</option>
+          <option value="ru">Русский</option>
+          <option value="en">Английский</option>
+          <option value="de">Немецкий</option>
+          <option value="fr">Французский</option>
+          <option value="es">Испанский</option>
+          <option value="zh">Китайский</option>
+          <option value="other">Другой</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="targetLanguage" class="form-label">Язык перевода</label>
+        <select id="targetLanguage" name="target_language" class="form-control" required>
+          <option value="" disabled selected>Выберите язык</option>
+          <option value="ru">Русский</option>
+          <option value="en">Английский</option>
+          <option value="de">Немецкий</option>
+          <option value="fr">Французский</option>
+          <option value="es">Испанский</option>
+          <option value="zh">Китайский</option>
+          <option value="other">Другой</option>
+        </select>
+      </div>
+
+      <!-- Дополнительные услуги -->
+      <div class="form-group hidden" id="additionalServicesGroup">
+        <label class="form-label">Дополнительные услуги</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" class="checkbox-input" id="notarization" name="notarization" value="700">
+            Нотариальное заверение
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" class="checkbox-input" id="apostille" name="apostille" value="3500">
+            Апостиль
+          </label>
+        </div>
+      </div>
+
+      <!-- Доставка -->
+      <div class="form-group hidden" id="deliveryGroup">
+        <label for="deliveryType" class="form-label">Тип доставки</label>
+        <select id="deliveryType" name="delivery_type" class="form-control">
+          <option value="" disabled selected>Выберите тип доставки</option>
+          <option value="pickup">Самовывоз</option>
+          <option value="delivery">Доставка</option>
+        </select>
+      </div>
+
+      <div class="form-group hidden" id="deliveryAddressGroup">
+        <label for="deliveryAddress" class="form-label">Адрес доставки</label>
+        <input type="text" id="deliveryAddress" name="delivery_address" class="form-control" placeholder="Введите адрес доставки">
+      </div>
+
+      <!-- Комментарий -->
+      <div class="form-group comment-group">
+        <label for="comment" class="form-label">Комментарий к заказу</label>
+        <textarea id="comment" name="comment" class="comment-area" placeholder="Введите ваш комментарий (необязательно)"></textarea>
+      </div>
+
+      <!-- Стоимость -->
+      <div class="price-container">
+        <div class="price-label">Стоимость:</div>
+        <div class="price-value" id="totalPrice">0 р.*</div>
+        <div class="price-note">*стоимость может измениться</div>
+      </div>
+
+      <!-- Кнопка отправки -->
+      <button type="submit" class="submit-btn">Заказать</button>
+    </form>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <script src="{% static 'js/order.js'%}" defer></script>
+{% endblock %}

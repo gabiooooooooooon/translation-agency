@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Вход | Бюро переводов "Ё"{% endblock %}
+
+{% block content %}
+<div class="container__form">
+    <h1 class="page-title">Вход</h1>
+
+    <form method="post" id="loginForm">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            Пожалуйста, исправьте следующие ошибки:
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <!-- Поле email -->
+        <div class="form-group">
+            <label for="id_username" class="form-label">E-mail</label>
+            <input type="email" name="username" id="id_username" class="form-control"
+                   placeholder="Введите ваш e-mail" required
+                   value="{{ form.username.value|default:'' }}">
+            {{ form.username.errors }}
+        </div>
+
+        <!-- Поле пароля -->
+        <div class="form-group">
+            <label for="id_password" class="form-label">Пароль</label>
+            <input type="password" name="password" id="id_password" class="form-control"
+                   placeholder="Введите ваш пароль" required>
+            <a href="{% url 'password_reset' %}" class="forgot-password">Не помните пароль?</a>
+            {{ form.password.errors }}
+        </div>
+
+        <!-- Кнопка входа -->
+        <button type="submit" class="submit-btn">Войти</button>
+
+        <!-- Ссылка на регистрацию -->
+        <div class="links-container">
+            <a href="{% url 'register' %}" class="register-link">Зарегистрироваться</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/auth.js' %}"></script>
+{% endblock %}

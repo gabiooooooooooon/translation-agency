@@ -1,0 +1,470 @@
+@media (max-width: 1200px) {
+    .nav {
+      position: static;
+      transform: none;
+      margin: 0 20px;
+    }
+    
+    .section-title {
+      font-size: 54px;
+    }
+    
+    .service__title, .service__text,
+    .price__title, .price__text {
+      font-size: 32px;
+    }
+    
+    .price__from {
+      font-size: 36px;
+    }
+    
+    .price__value {
+      font-size: 54px;
+    }
+
+    .page-title {
+      font-size: 54px;
+    }
+    
+    .service-title {
+      font-size: 36px;
+    }
+    
+    .service-text {
+      font-size: 28px;
+    }
+
+    .plain-text {
+      font-size: 28px;
+    }
+    
+    .projects-title {
+      font-size: 36px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .nav {
+      margin: 0 40px 0 20px;
+    }
+    
+    .nav__list {
+      gap: 20px;
+    }
+    
+    .nav__list a {
+      font-size: 20px;
+    }
+    
+    .login-btn {
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      padding: 15px 0;
+    }
+    
+    .nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background: var(--light);
+      margin: 0;
+      padding: 80px 30px 30px;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      left: auto;
+      transform: none;
+    }
+    
+    .nav.active {
+      right: 0;
+    }
+    
+    .nav__list {
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
+    
+    .nav__dropdown .nav__submenu {
+      position: static;
+      box-shadow: none;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      width: 100%;
+    }
+    
+    .nav__dropdown.active .nav__submenu {
+      max-height: 500px;
+      padding: 10px 0 10px 20px;
+    }
+    
+    .header__auth {
+      display: none;
+    }
+    
+    .nav__auth {
+      display: block;
+      margin-top: auto;
+      width: 100%;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      text-align: center;
+    }
+    
+    .nav__auth .login-btn {
+      display: inline-block;
+      padding: 10px 20px;
+    }
+    
+    .burger {
+      display: flex;
+    }
+    
+    .burger.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    
+    .burger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .burger.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    .slider {
+      height: 500px;
+    }
+    
+    .section-title {
+      font-size: 48px;
+    }
+    
+    .price-item {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .price__content {
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+    
+    .price__icon {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+    
+    .price__cost {
+      margin-left: 0;
+      text-align: center;
+    }
+    
+    .consultation__wrap {
+      flex-direction: column;
+      text-align: center;
+      padding: 30px;
+    }
+    
+    .consultation__icon {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+    
+    .consultation__btn {
+      margin-left: 0;
+      margin-top: 30px;
+    }
+    .page-title {
+      font-size: 48px;
+      margin-bottom: 60px;
+    }
+    
+    .service-content {
+      flex-direction: column;
+    }
+    
+    .service-info {
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+    
+    .service-btn {
+      align-self: center;
+    }
+
+    .review-form {
+      padding: 30px;
+    }
+
+    .form-label,
+      .rating-title,
+      .comment-area,
+      .review-meta,
+      .review-text,
+      .review-rating {
+        font-size: 24px;
+      }
+      
+      .rating-star {
+        font-size: 32px;
+      }
+      
+      .review-rating-stars {
+        font-size: 24px;
+      }
+
+      .page-title {
+        font-size: 48px;
+        margin-bottom: 40px;
+      }
+      
+      .order-info {
+        font-size: 28px;
+      }
+      
+      .order-status {
+        font-size: 24px;
+      }      
+
+    .plain-text {
+      font-size: 24px;
+      margin-bottom: 60px;
+    }
+    
+    .projects-title {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+    
+    .header__auth {
+      display: none;
+    }
+    
+    .nav__auth {
+      display: block;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .nav__auth .login-btn {
+      display: inline-block;
+      padding: 10px 20px;
+    }
+    
+    .auth-dropdown {
+      position: static;
+      box-shadow: none;
+      width: 100%;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .nav__auth.active .auth-dropdown {
+      max-height: 300px;
+    }
+    
+    .auth-dropdown a {
+      padding: 10px 15px;
+    }
+    
+    .burger {
+      display: flex;
+    }
+    
+    .burger.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    
+    .burger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .burger.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+}
+  
+  @media (max-width: 576px) {
+    .section-title {
+      font-size: 42px;
+    }
+    
+    .service {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .service__icon {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+    
+    .service__arrow {
+      display: none;
+    }
+    
+    .guarantees__list {
+      grid-template-columns: 1fr;
+    }
+    
+    .calculator__title {
+      font-size: 36px;
+    }
+    
+    .calculator__text {
+      font-size: 22px;
+    }
+    
+    .consultation__title {
+      font-size: 32px;
+    }
+    
+    .consultation__subtitle {
+      font-size: 24px;
+    }
+
+    .page-title {
+      font-size: 42px;
+    }
+    
+    .service-title {
+      font-size: 32px;
+    }
+    
+    .service-text {
+      font-size: 24px;
+    }
+    
+    .service-btn {
+      font-size: 20px;
+      padding: 10px 20px;
+    }
+    
+    .service-image {
+      height: 250px;
+    }
+
+    .form-label, 
+      .form-control,
+      .file-upload-text,
+      .checkbox-label,
+      .comment-area {
+        font-size: 20px;
+      }
+      
+      .form-label,
+      .rating-title,
+      .comment-area,
+      .review-meta,
+      .review-text,
+      .review-rating {
+        font-size: 20px;
+      }
+      
+      .rating-star {
+        font-size: 28px;
+      }
+
+      .price-label {
+        font-size: 28px;
+      }
+      
+      .price-value {
+        font-size: 60px;
+      }
+      
+      .submit-btn {
+        width: 100%;
+        font-size: 24px;
+      }
+
+      .forgot-password,
+      .register-link {
+        font-size: 20px;
+      }
+
+      .page-title {
+        font-size: 36px;
+      }
+      
+      .order-card {
+        padding: 20px;
+      }
+      
+      .order-info {
+        font-size: 24px;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .order-status {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+
+      .plain-text {
+        font-size: 20px;
+        text-align: left;
+      }
+  }
+  
+  @media (max-width: 400px) {
+    .section-title {
+      font-size: 36px;
+    }
+    
+    .service__title, .service__text,
+    .price__title, .price__text {
+      font-size: 28px;
+    }
+    
+    .price__from {
+      font-size: 32px;
+    }
+    
+    .price__value {
+      font-size: 48px;
+    }
+
+    .page-title {
+      font-size: 36px;
+    }
+    
+    .service-title {
+      font-size: 28px;
+    }
+    
+    .service-text {
+      font-size: 20px;
+    }
+    
+    .service-image {
+      height: 200px;
+    }
+
+    .plain-text {
+      font-size: 18px;
+    }
+    
+    .projects-title {
+      font-size: 28px;
+    }
+  }

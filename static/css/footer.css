@@ -1,0 +1,33 @@
+.footer {
+    background: var(--dark);
+    color: var(--light);
+    padding: 60px 0 30px;
+  }
+  
+  .footer__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  
+  .footer__left, .footer__right {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .footer__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  
+  .footer__bottom {
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+  }
+  
